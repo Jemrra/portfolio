@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Joey Morra | Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Google Fonts import -->
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet" />
+    <!-- no proxima nova for now -->
+    </head>
+    <body>
+        <!-- HEADER SECTION -->
+        <header class="site-header">
+            <div class="header-inner">
+              <h1 class="site-title">JOEY MORRA</h1>
+              <nav class="nav">
+                <a href=index.html>>portfolio</a><br>
+                <a href=about.html>>about</a>
+              </nav>
+            </div>
+          </header>
+
+        <!-- HERO SECTION -->
+         <header class="hero">
+            <img src="images/hero-artwork.jpg" alt="Hero Artwork" class="hero-img">
+            <h1 class="hero-title">>ILLUSTRATION</h1>
+         </header>
+
+         <!-- GALLERY SECTION -->
+         <main class="gallery" id="gallery">
+          <!-- Thumbnails will be generated here -->
+        </main>
+
+        <!-- Lightbox Overlay -->
+        <div id="lightbox" class="lightbox">
+          <div class="lightbox-content">
+              <span id="lightbox-close" class="lightbox-close" onclick="closeLightbox()">x</span>
+              <button class="lightbox-prev" onclick="navigateLightbox(-1)">‹</button>
+              <button class="lightbox-next" onclick="navigateLightbox(1)">›</button>
+              <div id="lightbox-image-container" class="lightbox-image-container">
+                <img id="lightbox-img" src="" alt="Artwork">
+              </div>
+              <div id="lightbox-title" class="lightbox-title"></div>
+              <p id="lightbox-description" class="lightbox-description"></p>
+          </div>
+      </div>
+
+         <script src="script.js"></script>
+    </body>
+</html>

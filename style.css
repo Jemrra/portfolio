@@ -1,0 +1,285 @@
+/* Reset some default styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Proxima Nova', sans-serif;
+    background-color: #212123;
+    color: #ffffff;
+}
+
+/* HERO SECTION */
+.hero {
+    position: relative; /* Set the parent to relative positioning */
+    width: 100%;
+    height: auto; /* or a fixed height if you want */
+    overflow: hidden; /* optional, keeps things clean */
+}
+
+.hero-img {
+    width: 100%;
+    height: auto;
+    display: block; /* removes any unwanted gaps under image */
+    opacity: 50%;
+}
+
+.hero-title {
+    position: absolute; /* Absolute to .hero */
+    display: block;
+    bottom: 1px;
+    left: 100px; 
+    color: white; /* Make text visible */
+    font-size: 2rem; /* Adjust size as needed */
+    z-index: 2; /* Ensure it's above the image */
+    pointer-events: none; /* Makes text "unclickable" if needed */
+}
+
+/* GALLERY GRID */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px, 10px));
+    gap: 10px;
+    padding: 2rem;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* THUMBNAILS */
+.thumbnail {
+    width: 250px;
+    height: 150px;
+    background-color: #000; /* fills any space around the image */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.thumbnail img {
+    height: 100%;
+    width: auto; /* scale proportionally */
+    object-fit: contain; /* fallback */
+    display: block;
+    background-color: transparent;
+}
+
+.thumbnail.hover img {
+    transform: scale(1.02);
+}
+
+.corner-indicator {
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.corner-indicator::before,
+.corner-indicator::after {
+  content: "";
+  position: absolute;
+  background-color: orange;
+  opacity: 0;
+}
+
+/* Horizontal (top) line */
+.corner-indicator::before {
+  top: 0;
+  left: 0;
+  width: 20px; /* Length of top segment */
+  height: 8px;  /* Thickness */
+}
+
+/* Vertical (left) line */
+.corner-indicator::after {
+  top: 0;
+  left: 0;
+  width: 8px;   /* Thickness */
+  height: 20px; /* Length of side segment */
+}
+
+/* Show indicator only on hover */
+.thumbnail:hover .corner-indicator::before,
+.thumbnail:hover .corner-indicator::after {
+  opacity: 1;
+}
+
+/* LIGHTBOX */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox.active {
+    display: flex;
+    flex-direction: column;
+}
+
+.lightbox-content {
+    width: 1200px;
+    max-width: 90vw;
+    background: #212123;;
+    padding: 1.5rem;
+    position: relative;
+    font-family: 'Courier New', monospace;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    z-index: 1010;
+}
+
+.lightbox-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent; /* Default: no background */
+    margin-top: 1rem;
+    margin-bottom: 20px;
+    width: 100%; /* Fill content width */
+    box-sizing: border-box;
+    padding: 0;
+}
+
+.lightbox-image-container.portrait {
+    background-color: black;
+    margin-top: 1rem;
+    max-height: 80vh;
+}
+
+.lightbox-content img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    max-height: 80vh;
+    /*margin-top: 70px;
+    margin-bottom: 10px; */
+    opacity: 0;
+    object-fit: contain;
+}
+
+#lightbox-img.show {
+    opacity: 1;
+}
+
+.lightbox.active .lightbox-content {
+    opacity: 1;
+}
+
+.lightbox-title {
+    font-family: 'Proxima Nova Extra Bold', sans-serif;
+    font-weight: 800; /* fallback if Extra Bold isn't loading */
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    text-align: left;
+    color: #ffffff;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: .5rem;
+    right: .5rem;
+    color: #D9D9D9;
+    padding: 0.25rem 0.5rem;
+    border: none;
+    cursor: pointer;
+    font-family: 'Proxima Nova Extra Bold', sans-serif;
+}
+
+.lightbox-prev,
+.lightbox-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.2);
+    color: white;
+    border: none;
+    font-size: 2rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    z-index: 11;
+}
+
+.lightbox-prev {
+    left: -3rem;
+}
+
+.lightbox-next {
+    right: -3rem;
+}
+
+/* HEADER */
+.site-header {
+    width: 100%;
+    background-color: #212123;;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-inner {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+    justify-content: left;
+}
+
+.nav a {
+    margin-left: 1.5rem;
+    text-decoration: none;
+    font-family:'Courier New', Courier, monospace;
+    color: #8e8e8e;
+    font-weight: 500;
+    transition: color;
+}
+
+.nav a:hover {
+    color: #555;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+/*ABOUT ME CONTENT */
+.about-content {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+    font-family: 'Courier Prime', monospace;
+    text-align: left;
+}
+
+.profile-pic {
+    width: 300px; /* or whatever size you want */
+    height: auto;
+    margin: 1rem auto;
+    display: block;
+    float: left; /* this makes the image align left */
+    margin: 0 1rem 1rem 0; /* space to the right and bottom */
+}
