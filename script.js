@@ -4,7 +4,7 @@ let imageCount = 0;
 let currentIndex = 0;
 let artworks = [];
 
-    fetch('data/artworks.json') // Adjust the path as needed
+    fetch('data/artworks.JSON') // Adjust the path as needed
         .then(response => response.json())  // Parse the JSON data
         .then(data => {
             artworks = data; // Assign the parsed data to the artworks array
